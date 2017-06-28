@@ -1,22 +1,63 @@
 <% if logged_in? %>
   <div class="row">
     <aside class="col-md-4">
-      <%= form_for(@movie) do |f| %>
+      <%= form_for(@image) do |f| %>
         <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+      　　<%= f.label :image %>
+　        <%= image_tag @image.image.thumb.url if @image.image? %>
+　        <%= f.file_field :image %>
+　        <%= f.hidden_field :image_cache %>
         </div>
         <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
       <% end %>
     </aside>
     <div class="col-xs-8">
-      <%= render 'movies/movies', movies: @movies, user: @user %>
+      <%= render 'images/images', images: @images %>
     </div>
   </div>
+
 <% else %>
+  
+  
   <div class="center jumbotron">
     <div class="text-center">
-      <h1>Welcome to the FitShare</h1>
-      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+      <h2>誰でもフィットネス動画を販売する事の出来る"FitShare"</h1>
+      <h3>インストラクターの資格を持っているあなた</br>資格を持っていなくてもフィットネス経験豊富なあなた</h2>
+      <h3>あなたのノウハウや知識を必要としてる方々に共有しましょう</h2>
+      <h2>サービス近日公開予定！　事前登録フォーム</h1>
+      <%= link_to '事前登録', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
+  
+    <div class="text-center">
+      <h2>スマホ1台で誰でもインストラクターに！</br>
+          自分に必要な部位別のフィットネス動画が見つかる！</h2>
+    </div>
+    
+    <about>
+      <ul>
+        <li>
+          <figure>
+            <img src="images/sale.png" alt="FitShare sale">
+            <figcaption>動画を販売</figcaption>
+          </figure>
+        </li>
+        <li>
+            <img src="images/FitShare_logo.png" alt="FitShare logo">
+        </li>
+        <li>
+          <figure>
+            <img src="images/buy.png" alt="FitShare buy">
+            <figcaption>動画を購入</figcaption>
+          </figure>
+        </li>
+      </ul>
+    </about>
+    
+    <div class="text-center">
+      <%= video_tag("sample.mp4", :controls => true, :width => '50%') %>
+      <h2>サンプル動画</br>
+      一つの部位に効果のある30秒弱の動画が理想的です！</h2>
+    </div>
+    
 <% end %>
