@@ -6,7 +6,6 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   
-  has_many :movies
-  has_many :images
+  has_many :videos
   
 end

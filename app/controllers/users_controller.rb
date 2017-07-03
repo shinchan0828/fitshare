@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @images = @user.images.order('created_at DESC').page(params[:page])
+    @videos = @user.videos.order('created_at DESC').page(params[:page])
     counts(@user)
   end
 
@@ -34,6 +34,6 @@ private
   end
   
   def user_params
-    params.require(:user).permit(:name, :describe, :image)
+    params.require(:user).permit(:name, :describe, :video)
   end
 end

@@ -11,16 +11,16 @@
   </aside>
   <div class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">
-      <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>Images <span class="badge"><%= @count_movies %></span><% end %></li>
+      <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>Videos <span class="badge"><%= @count_movies %></span><% end %></li>
       <li><a href="#">Followings</a></li>
       <li><a href="#">Followers</a></li>
     </ul>
    
-   <%= render 'images/images', images: @images %>
-  <% if @user.image? %>
-　<%= image_tag @user.image.thumb.url %>
+   <%= render 'videos/videos', videos: @videos %>
+  <% if @user.video? %>
+      <%= video_tag @video_path, controls: true, preload: true %>
 　<% else %>
-　<%= image_tag 'noimage.gif' %>
+　<%= video_tag 'novideo.gif' %>
 　<% end %>
    
   </div>

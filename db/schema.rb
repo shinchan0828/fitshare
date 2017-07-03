@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628060806) do
+ActiveRecord::Schema.define(version: 20170629094616) do
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20170628060806) do
     t.datetime "updated_at", null: false
     t.string   "image"
     t.index ["user_id"], name: "index_images_on_user_id", using: :btree
+  end
+
+  create_table "inquiries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "movies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -39,8 +47,19 @@ ActiveRecord::Schema.define(version: 20170628060806) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "image"
+    t.string   "video"
+  end
+
+  create_table "videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "video"
+    t.index ["user_id"], name: "index_videos_on_user_id", using: :btree
   end
 
   add_foreign_key "images", "users"
   add_foreign_key "movies", "users"
+  add_foreign_key "videos", "users"
 end

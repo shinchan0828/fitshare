@@ -1,18 +1,16 @@
 <% if logged_in? %>
   <div class="row">
     <aside class="col-md-4">
-      <%= form_for(@image) do |f| %>
+      <%= form_for(@video) do |f| %>
         <div class="form-group">
-      　　<%= f.label :image %>
-　        <%= image_tag @image.image.thumb.url if @image.image? %>
-　        <%= f.file_field :image %>
-　        <%= f.hidden_field :image_cache %>
+      　　<%= f.label :video %>
+　        <%= f.file_field :video %>
         </div>
         <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
       <% end %>
     </aside>
     <div class="col-xs-8">
-      <%= render 'images/images', images: @images %>
+      <%= render 'videos/videos', videos: @videos %>
     </div>
   </div>
 
@@ -59,5 +57,26 @@
       <h2>サンプル動画</br>
       一つの部位に効果のある30秒弱の動画が理想的です！</h2>
     </div>
+    
+    #問い合わせフォーム
+    <%= form_for(@inquiry) do |f| %>
+
+      <div class="form-group">
+        <%= f.label :name, 'Name' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :email, 'Email' %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :content, 'Content' %>
+        <%= f.text_field :content, class: 'form-control' %>
+      </div>
+
+      <%= f.submit 'Send', class: 'btn btn-primary btn-block' %>
+    <% end %>
     
 <% end %>
