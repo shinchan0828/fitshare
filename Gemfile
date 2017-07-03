@@ -58,3 +58,8 @@ gem 'carrierwave'
 gem 'rmagick'
 
 gem 'streamio-ffmpeg'
+
+group :production do
+  gem 'pg'
+end
+
